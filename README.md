@@ -72,7 +72,7 @@ To compute the best possible matching between the vertices and edges of your gra
 other graph:
 
 ```swift
-let otherGraph = Graph<VertexLabel, EdgeLabel>(name: "OtherGraph")
+let otherGraph = Graph<VertexLabel, EdgeLabel>(named: "OtherGraph")
 
 let otherVertex1 = otherGraph.addVertex(named: "1", labelledWith: .A)
 let otherVertex2 = otherGraph.addVertex(named: "2", labelledWith: .A)
@@ -120,7 +120,7 @@ the other graph as values:
 
 ```swift
 print("Vertices matches:")
-for (vertex, match) in matching.nodeMatches {
+for (vertex, match) in matching.vertexMatches {
   print("\t-\(vertex.name): \(match.name)")
 }
 
