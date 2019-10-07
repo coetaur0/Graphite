@@ -1,7 +1,7 @@
 # Graphite
 
-[![Build Status](https://travis-ci.com/coetaur0/SwiftAGM.svg?branch=master)](https://travis-ci.com/coetaur0/Graphite)
-[![codecov](https://codecov.io/gh/coetaur0/SwiftAGM/branch/master/graph/badge.svg)](https://codecov.io/gh/coetaur0/Graphite)
+[![Build Status](https://travis-ci.com/coetaur0/Graphite.svg?branch=master)](https://travis-ci.com/coetaur0/Graphite)
+[![codecov](https://codecov.io/gh/coetaur0/Graphite/branch/master/graph/badge.svg)](https://codecov.io/gh/coetaur0/Graphite)
 
 A Swift library to build and manipulate graphs.
 
