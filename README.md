@@ -58,14 +58,18 @@ let vertex4 = graph.addVertex(named: "4", labelledWith: .B)
 
 _ = graph.addEdge(named: "1-2", labelledWith: .a, from: vertex1, to: vertex2)
 _ = graph.addEdge(named: "1-3", labelledWith: .b, from: vertex1, to: vertex3)
-_ = graph.addEdge(named: "2-1", labelledWith: .b, from: vertex2, to: vertex1)
+_ = graph.addEdge(named: "2-1", labelledWith: .a, from: vertex2, to: vertex1)
 _ = graph.addEdge(named: "4-1", labelledWith: .b, from: vertex4, to: vertex1)
 ```
+
+The graph corresponding to the code above looks like this:
+
+![graph](./Images/graph.png)
 
 ### Matching two graphs
 
 To compute the best possible matching between the vertices and edges of your graph and those of another one, first build the 
-other graph, and then call the `match(with:)` method of your graph with the other one as argument:
+other graph:
 
 ```swift
 let otherGraph = Graph<VertexLabel, EdgeLabel>(name: "OtherGraph")
@@ -81,16 +85,34 @@ _ = otherGraph.addEdge(named: "1-3", labelledWith: .b, from: otherVertex1, to: o
 _ = otherGraph.addEdge(named: "2-1", labelledWith: .b, from: otherVertex2, to: otherVertex1)
 _ = otherGraph.addEdge(named: "4-1", labelledWith: .b, from: otherVertex4, to: otherVertex1)
 _ = otherGraph.addEdge(named: "5-1", labelledWith: .c, from: otherVertex5, to: otherVertex1)
+```
 
+The code above produces the following graph, called `OtherGraph`:
+
+![othergraph](./Images/othergraph.png)
+
+Once the other graph has been defined, call the `match(with:)` method with the other graph as argument:
+
+```swift
 let matching = graph.match(with: otherGraph)
 ```
 
+The resulting matching looks something like this:
+
+![matching](./Images/matching.png)
+
+where the vertices and edges in black are matched through the *red* connections, and those in *gray* are left unmatched.
+Notice how vertices or edges with different labels cannot be matched with each other.
+
 The score of a matching between two graphs can be retrieved through its `score` property. It corresponds to the number of 
-vertices and edges matched in the two graphs over the total number of vertices and edges in the graph that called `match`:
+vertices and edges matched in the two graphs (the red connections in the image) over the total number of vertices and edges
+in the graph that called `match` (the graph with blue vertices in the images). The code:
 
 ```swift
 print("Matching score: \(matching.score)")
 ```
+
+prints out `Matching score: 0.75`.
 
 The matches between vertices and edges can be accessed though the `vertexMatches` and `edgeMatches` properties of a matching.
 Those properties are dictionaries with the vertices and edges of the graph that called `match` as keys, and their matches in
