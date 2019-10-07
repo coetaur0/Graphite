@@ -1,0 +1,6 @@
+language: swift
+osx_image: xcode11
+script:
+  - xcodebuild -scheme Graphite-Package build test
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
