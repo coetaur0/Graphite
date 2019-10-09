@@ -16,12 +16,10 @@ public struct Matching<VertexLabel: Hashable, EdgeLabel: Hashable> {
                                         Graph<VertexLabel, EdgeLabel>.Edge] = [:]
   
   /// The score of the matching between two graphs. It is equal to the number of matched vertices
-  /// and edges over the total number of vertices and edges in the matching's graphA.
+  /// and edges over the total number of vertices and edges in the matching's graph A.
   public var score: Double {
-    get {
-      return Double(vertexMatches.count + edgeMatches.count) /
-        Double(graphA.vertices.count + graphA.edges.count)
-    }
+    return Double(vertexMatches.count + edgeMatches.count) /
+      Double(graphA.vertices.count + graphA.edges.count)
   }
   
   /// Augment the matching between graphs A and B with a new correspondance between vertices, along
